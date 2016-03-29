@@ -49,6 +49,7 @@ import org.mybatis.generator.config.GeneratedKey;
 import org.mybatis.generator.config.PropertyRegistry;
 import org.mybatis.generator.config.TableConfiguration;
 import org.mybatis.generator.internal.ObjectFactory;
+import org.mybatis.generator.internal.pdm.ReadPDM;
 import org.mybatis.generator.logging.Log;
 import org.mybatis.generator.logging.LogFactory;
 
@@ -74,6 +75,9 @@ public class DatabaseIntrospector {
     /** The logger. */
     private Log logger;
 
+    /** add by yanxin 20160325 初始化类是读取PDM进来 */
+    private ReadPDM readPDM;
+    
     /**
      * Instantiates a new database introspector.
      *
@@ -95,6 +99,7 @@ public class DatabaseIntrospector {
         this.javaTypeResolver = javaTypeResolver;
         this.warnings = warnings;
         logger = LogFactory.getLog(getClass());
+        this.readPDM = new ReadPDM();
     }
 
     /**
@@ -614,7 +619,16 @@ public class DatabaseIntrospector {
             introspectedColumn.setScale(rs.getInt("DECIMAL_DIGITS")); //$NON-NLS-1$
             introspectedColumn.setRemarks(rs.getString("REMARKS")); //$NON-NLS-1$
             introspectedColumn.setDefaultValue(rs.getString("COLUMN_DEF")); //$NON-NLS-1$
-
+            
+            //add by yanxin 20160325 增加读取PDM获取字段对应中文名称
+            //TODO 待完善
+            try {
+            	introspectedColumn.setColumnName(readPDM.getColumnName(localTableName,introspectedColumn.getActualColumnName()));
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+            
+            
             ActualTableName atn = new ActualTableName(
                     rs.getString("TABLE_CAT"), //$NON-NLS-1$
                     rs.getString("TABLE_SCHEM"), //$NON-NLS-1$

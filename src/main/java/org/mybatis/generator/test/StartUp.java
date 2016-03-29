@@ -26,15 +26,15 @@ public class StartUp {
 	 
 	
 	public static void main(String[] args) throws Exception {
-		/*List<String> warnings = new ArrayList<String>();
+		List<String> warnings = new ArrayList<String>();
     	File configFile = new File(StartUp.class.getResource("/generatorConfig.xml").toURI());
     	ConfigurationParser cp = new ConfigurationParser(warnings);
     	Configuration config = cp.parseConfiguration(configFile);
     	DefaultShellCallback shellCallback = new DefaultShellCallback(true);
     	MyBatisGenerator myBatisGenerator = new MyBatisGenerator(config, shellCallback, warnings);
     	myBatisGenerator.generate(null);
-    	System.out.println(warnings);*/
-		
+    	System.out.println(warnings);
+		/*
 		//读取指定PDM
 		File file = new File(StartUp.class.getResource("/1.pdm").toURI());
 		//FileReader fileReader = new FileReader(file);
@@ -61,6 +61,7 @@ public class StartUp {
 			System.out.println("*************");
 			for (int i = 0; i < aList.size(); i++) {
 				Element aElement = (Element) aList.get(i);
+				System.out.println(((Element)aElement.getChildren().get(1)).getText());
 				System.out.println(aElement.getChild("Name",na).getText());
 			}
 			System.out.println("*************");
@@ -69,7 +70,7 @@ public class StartUp {
 			System.out.println(columns.getChild("Column"));
 			System.out.println("1");
 		}
-		System.out.println(DBName);
+		System.out.println(DBName);*/
 		
 	}
 }

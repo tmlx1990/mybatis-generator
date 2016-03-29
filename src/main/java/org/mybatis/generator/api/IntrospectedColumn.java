@@ -65,6 +65,9 @@ public class IntrospectedColumn {
     protected String remarks;
 
     protected String defaultValue;
+    
+    //add by yanxin 20160325 通过读取PDM获取字段姓名
+    protected String columnName;
 
     /**
      * Constructs a Column definition. This object holds all the information
@@ -301,4 +304,12 @@ public class IntrospectedColumn {
     public void setSequenceColumn(boolean isSequenceColumn) {
         this.isSequenceColumn = isSequenceColumn;
     }
+
+	public String getColumnName() {
+		return columnName;
+	}
+
+	public void setColumnName(String columnName) {
+		this.columnName = columnName;
+	}
 }
