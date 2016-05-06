@@ -441,6 +441,11 @@ public class DefaultCommentGenerator implements CommentGenerator {
         innerClass.addJavaDocLine(" */"); //$NON-NLS-1$
     }
     
+    /*
+     * (non-Javadoc)
+     * @see org.mybatis.generator.api.CommentGenerator#addColumnNameComment(org.mybatis.generator.api.dom.java.Field, org.mybatis.generator.api.IntrospectedTable, org.mybatis.generator.api.IntrospectedColumn)
+     * Add Column Name Comments 
+     */
     public void addColumnNameComment(Field field,
             IntrospectedTable introspectedTable,
             IntrospectedColumn introspectedColumn) {
@@ -450,7 +455,7 @@ public class DefaultCommentGenerator implements CommentGenerator {
 
             String columnName = introspectedColumn.getColumnName();
             if (StringUtility.stringHasValue(columnName)) {
-                field.addJavaDocLine(" * Database Column Remarks:");
+                field.addJavaDocLine(" * Database Column Name:");
                 String[] remarkLines = columnName.split(System.getProperty("line.separator"));  //$NON-NLS-1$
                 for (String remarkLine : remarkLines) {
                     field.addJavaDocLine(" *   " + remarkLine);  //$NON-NLS-1$
