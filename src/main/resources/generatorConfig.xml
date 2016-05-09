@@ -7,9 +7,11 @@
 	<classPathEntry location="D:\git\mybatis-generator\target\classes\mysql-connector-java-5.1.38.jar"/>     
 	<!--<classPathEntry location="/mysql-connector-java-5.1.38.jar"/>    -->
  <!--   <classPathEntry    location="F:\apps\mybatis-generator\target\classes\mysql-connector-java-5.1.38.jar"/>-->
+ 	<!-- PDM存放路径 
+ 	<pdmUrl location=""></pdmUrl>-->
     <context id="DB2Tables"    targetRuntime="MyBatis3">
         <commentGenerator>
-            <property name="suppressDate" value="true"/>
+            <property name="suppressDate" value="false"/>
             <property name="suppressAllComments" value="true"/>
         </commentGenerator>
         <!--数据库链接地址账号密码-->
@@ -32,6 +34,9 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
         <!--生成对应表及类名-->
-        <table tableName="LDMenu" domainObjectName="LDMenu" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+        <table tableName="LDMenu" domainObjectName="LDMenu" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+        	<!-- 表字段名驼峰样式 -->
+        	<property name="useActualColumnNames" value="true" />
+        </table>
     </context>
 </generatorConfiguration>
