@@ -24,7 +24,8 @@ public class ReadPDM {
 	public ReadPDM(){
 
 		try {
-			file = new File(StartUp.class.getResource("/1.pdm").toURI());
+			//file = new File(StartUp.class.getResource("/1.pdm").toURI());
+			file = new File("./1.pdm");
 			//FileReader fileReader = new FileReader(file);
 			document = new SAXBuilder().build(file);
 			root = document.getRootElement();
