@@ -12,7 +12,7 @@
 
   <build>
   	<plugins>
-		<!-- 生成jar包，关联jar包存在lib下。
+		<!-- 生成jar包，关联jar包存在lib下。 -->
 		<plugin>  
 		    <groupId>org.apache.maven.plugins</groupId>  
 		    <artifactId>maven-jar-plugin</artifactId>  
@@ -20,7 +20,8 @@
 		    <configuration>  
 		        <archive>  
 		            <manifest>  
-		                <addClasspath>true</addClasspath> 
+		                <addClasspath>true</addClasspath>
+		                <classpathPrefix>lib/</classpathPrefix>
 		                <mainClass>org.mybatis.generator.api.ShellRunner</mainClass>  
 		            </manifest>  
 		        </archive>
@@ -46,24 +47,27 @@
                 </execution>  
             </executions>  
         </plugin>  
-        -->
-        
+       
+      <!--   
         <plugin>  
             <groupId>org.apache.maven.plugins</groupId>  
             <artifactId>maven-assembly-plugin</artifactId>  
-            <version>2.5.5</version>  
+            <version>2.6</version>  
             <configuration>  
                 <archive>  
                     <manifest>  
                         <mainClass>org.mybatis.generator.api.ShellRunner</mainClass>  
                     </manifest>  
                 </archive>
-                <!-- <includes>
+                <includes>
 		       		<include>**/org/**</include>
-		        </includes> -->
+		        </includes>
                 <descriptorRefs>  
                     <descriptorRef>jar-with-dependencies</descriptorRef>
                 </descriptorRefs>
+                <descriptors>  
+            		<descriptor>src/main/resources/assembly.xml</descriptor> Assembly 描述符文件  
+        		</descriptors>
              	
             </configuration>
             <executions>  
@@ -75,7 +79,7 @@
                     </goals>
                 </execution>  
             </executions>
-        </plugin>
+        </plugin> -->
   	</plugins>
   </build>
 
@@ -113,19 +117,25 @@
 	     
 	    <!-- jaxen -->
 	    <dependency>
+		  <groupId>jaxen</groupId>
+		  <artifactId>jaxen</artifactId>
+		  <version>1.1.4</version>
+		</dependency>
+	    <!-- <dependency>
 			<groupId>org.jdom</groupId>
 			<artifactId>jaxen-core</artifactId>
 			<version>1.0-FCS</version>
-		</dependency>
-		<dependency>
+		</dependency> -->
+		<!-- <dependency>
 			<groupId>org.jdom</groupId>
 			<artifactId>jaxen-jdom</artifactId>
 			<version>1.0-FCS</version>
-		</dependency>
-		<dependency>
+		</dependency>-->
+		<!-- <dependency>
 			<groupId>org.jdom</groupId>
 			<artifactId>saxpath</artifactId>
 			<version>1.0-FCS</version>
-		</dependency>
+		</dependency>  -->
+		
   </dependencies>
 </project>
