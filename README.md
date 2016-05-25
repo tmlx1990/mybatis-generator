@@ -1,3 +1,16 @@
-本工具可以利用读取PDM，获取相应的数据库列名对应的中文名，进行自动生成实体类中添加中文注释。
+#	使用说明
+## 	一、工具介绍
+   本工具可以通过读取固定PDM文件，获取数据库中相应列名对应的中文名称，然后在生成实体类的使用添加到相应字段上。
 
-*as*
+##  二、使用方法
+   1. 导入项目到Eclipse中。
+   2. 配置Maven打包命令  
+   `mvn clean package`
+   3. 将target打包后的jar文件及相应的lib文件夹拷贝到官方下载的mybatis-generator目录下。
+   4. 替换原有mybatis-generator-core-*.*.jar包。
+   5. 将要生成的表对应的PDM放到mybatis-generator所在目录。并将名称改为1.pdm。
+   6. 执行run.bat文件。等待生成文件。
+	
+
+
+
