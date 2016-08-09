@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 <generatorConfiguration>
     <!--数据库驱动-->
-	<classPathEntry location="D:\git\mybatis-generator\target\classes\mysql-connector-java-5.1.38.jar"/>     
+	<classPathEntry location="D:\apps\git\mybatis-generator\target\classes\mysql-connector-java-5.1.38.jar"/>
 	<!--<classPathEntry location="/mysql-connector-java-5.1.38.jar"/>    -->
  <!--   <classPathEntry    location="F:\apps\mybatis-generator\target\classes\mysql-connector-java-5.1.38.jar"/>-->
  	<!-- PDM存放路径 
