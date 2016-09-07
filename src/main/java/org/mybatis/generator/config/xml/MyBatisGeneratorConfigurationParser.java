@@ -94,6 +94,8 @@ public class MyBatisGeneratorConfigurationParser {
                 parseProperties(configuration, childNode);
             } else if ("classPathEntry".equals(childNode.getNodeName())) { //$NON-NLS-1$
                 parseClassPathEntry(configuration, childNode);
+            } else if ("pdmUrl".equals(childNode.getNodeName())) { //$NON-NLS-1$
+                parsePdmUrl(configuration, childNode);
             } else if ("context".equals(childNode.getNodeName())) { //$NON-NLS-1$
                 parseContext(configuration, childNode);
             }
@@ -608,6 +610,12 @@ public class MyBatisGeneratorConfigurationParser {
         Properties attributes = parseAttributes(node);
 
         configuration.addClasspathEntry(attributes.getProperty("location")); //$NON-NLS-1$
+    }
+
+    private void parsePdmUrl(Configuration configuration, Node node) {
+        Properties attributes = parseAttributes(node);
+
+        configuration.addPdmUrl(attributes.getProperty("url")); //$NON-NLS-1$
     }
 
     private void parseProperty(PropertyHolder propertyHolder, Node node) {

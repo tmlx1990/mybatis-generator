@@ -32,7 +32,7 @@
 <!--
   The generatorConfiguration element is the root element for configurations.
 -->
-<!ELEMENT generatorConfiguration (properties?, classPathEntry*, context+)>
+<!ELEMENT generatorConfiguration (properties?, classPathEntry*, pdmUrl*, context+)>
                         
 <!--
   The properties element is used to define a standard Java properties file
@@ -73,6 +73,13 @@
 <!ELEMENT classPathEntry EMPTY>
 <!ATTLIST classPathEntry
   location CDATA #REQUIRED>
+
+<!--
+  pdmUrl
+-->
+<!ELEMENT pdmUrl EMPTY>
+<!ATTLIST pdmUrl
+        url CDATA #REQUIRED>
 
 <!--
   The property element is used to add custom properties to many of the generator's

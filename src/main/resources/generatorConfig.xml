@@ -2,13 +2,15 @@
 <!DOCTYPE generatorConfiguration
   PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
   "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+   <!--"../org/mybatis/generator/mybatis-generator-config_1_0.dtd">-->
 <generatorConfiguration>
-    <!--数据库驱动-->
+          <!--数据库驱动-->
 	<classPathEntry location="D:\apps\git\mybatis-generator\target\classes\mysql-connector-java-5.1.38.jar"/>
 	<!--<classPathEntry location="/mysql-connector-java-5.1.38.jar"/>    -->
  <!--   <classPathEntry    location="F:\apps\mybatis-generator\target\classes\mysql-connector-java-5.1.38.jar"/>-->
- 	<!-- PDM存放路径 
- 	<pdmUrl location=""></pdmUrl>-->
+ 	<!-- PDM存放路径 -->
+ 	<pdmUrl url="D:\apps\git\mybatis-generator\src\main\resources\1.pdm"></pdmUrl>
+
     <context id="DB2Tables"    targetRuntime="MyBatis3">
         <commentGenerator>
             <property name="suppressDate" value="false"/>

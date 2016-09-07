@@ -605,7 +605,7 @@ public class Context extends PropertyHolder {
      *             if the progress callback reports a cancel
      */
     public void introspectTables(ProgressCallback callback,
-            List<String> warnings, Set<String> fullyQualifiedTableNames)
+            List<String> warnings, Set<String> fullyQualifiedTableNames, Configuration configuration)
             throws SQLException, InterruptedException {
 
         introspectedTables = new ArrayList<IntrospectedTable>();
@@ -619,7 +619,7 @@ public class Context extends PropertyHolder {
             connection = getConnection();
 
             DatabaseIntrospector databaseIntrospector = new DatabaseIntrospector(
-                    this, connection.getMetaData(), javaTypeResolver, warnings);
+                    this, connection.getMetaData(), javaTypeResolver, warnings,configuration);
 
             for (TableConfiguration tc : tableConfigurations) {
                 String tableName = composeFullyQualifiedTableName(tc.getCatalog(), tc

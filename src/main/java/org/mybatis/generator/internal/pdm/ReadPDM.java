@@ -9,6 +9,7 @@ import org.jdom.Element;
 import org.jdom.Namespace;
 import org.jdom.input.SAXBuilder;
 import org.jdom.xpath.XPath;
+import org.mybatis.generator.config.Configuration;
 import org.mybatis.generator.test.StartUp;
 
 public class ReadPDM {
@@ -24,7 +25,8 @@ public class ReadPDM {
 	public ReadPDM(){
 
 		try {
-			file = new File(StartUp.class.getResource("/1.pdm").toURI());
+			//file = new File(StartUp.class.getResource("/1.pdm").toURI());
+			file = new File("");
 			//file = new File("./1.pdm");
 			//FileReader fileReader = new FileReader(file);
 			document = new SAXBuilder().build(file);
@@ -36,6 +38,27 @@ public class ReadPDM {
 			e.printStackTrace();
 		}
 		
+	}
+
+	public ReadPDM(Configuration configuration){
+		try {
+			if (configuration != null && configuration.getPdmUrls() != null){
+				file = new File(configuration.getPdmUrls().get(0));
+				//file = new File("./1.pdm");
+				//FileReader fileReader = new FileReader(file);
+				document = new SAXBuilder().build(file);
+				root = document.getRootElement();
+				na = root.getNamespace("a");
+				nc = root.getNamespace("c");
+				no = root.getNamespace("o");
+			}else {
+				System.out.println("没有配置读取PDM参数");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 	}
 
 	public String getColumnName(String tableName,String columnCode) throws Exception {

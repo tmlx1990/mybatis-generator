@@ -221,7 +221,7 @@ public class MyBatisGenerator {
 
         for (Context context : contextsToRun) {
             context.introspectTables(callback, warnings,
-                    fullyQualifiedTableNames);
+                    fullyQualifiedTableNames,configuration);
         }
 
         // now run the generates

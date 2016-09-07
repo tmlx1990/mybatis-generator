@@ -43,11 +43,7 @@ import org.mybatis.generator.api.IntrospectedTable;
 import org.mybatis.generator.api.JavaTypeResolver;
 import org.mybatis.generator.api.dom.java.FullyQualifiedJavaType;
 import org.mybatis.generator.api.dom.java.JavaReservedWords;
-import org.mybatis.generator.config.ColumnOverride;
-import org.mybatis.generator.config.Context;
-import org.mybatis.generator.config.GeneratedKey;
-import org.mybatis.generator.config.PropertyRegistry;
-import org.mybatis.generator.config.TableConfiguration;
+import org.mybatis.generator.config.*;
 import org.mybatis.generator.internal.ObjectFactory;
 import org.mybatis.generator.internal.pdm.ReadPDM;
 import org.mybatis.generator.logging.Log;
@@ -77,7 +73,7 @@ public class DatabaseIntrospector {
 
     /** add by yanxin 20160325 初始化类是读取PDM进来 */
     private ReadPDM readPDM;
-    
+
     /**
      * Instantiates a new database introspector.
      *
@@ -92,14 +88,15 @@ public class DatabaseIntrospector {
      */
     public DatabaseIntrospector(Context context,
             DatabaseMetaData databaseMetaData,
-            JavaTypeResolver javaTypeResolver, List<String> warnings) {
+            JavaTypeResolver javaTypeResolver, List<String> warnings ,
+                                Configuration configuration) {
         super();
         this.context = context;
         this.databaseMetaData = databaseMetaData;
         this.javaTypeResolver = javaTypeResolver;
         this.warnings = warnings;
         logger = LogFactory.getLog(getClass());
-        this.readPDM = new ReadPDM();
+        this.readPDM = new ReadPDM(configuration);
     }
 
     /**

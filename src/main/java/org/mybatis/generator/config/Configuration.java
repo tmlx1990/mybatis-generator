@@ -40,6 +40,9 @@ public class Configuration {
     /** The class path entries. */
     private List<String> classPathEntries;
 
+    /** The pdm url entries. */
+    private List<String> pdmUrls;
+
     /**
      * Instantiates a new configuration.
      */
@@ -47,6 +50,7 @@ public class Configuration {
         super();
         contexts = new ArrayList<Context>();
         classPathEntries = new ArrayList<String>();
+        pdmUrls = new ArrayList<String>();
     }
 
     /**
@@ -66,6 +70,14 @@ public class Configuration {
      */
     public List<String> getClassPathEntries() {
         return classPathEntries;
+    }
+
+    public void addPdmUrl(String entry) {
+        pdmUrls.add(entry);
+    }
+
+    public List<String> getPdmUrls() {
+        return pdmUrls;
     }
 
     /**
@@ -160,6 +172,13 @@ public class Configuration {
 
         for (Context context : contexts) {
             rootElement.addElement(context.toXmlElement());
+        }
+
+        //增加pdmUrl配置参数
+        for (String pdmUrl : pdmUrls){
+            XmlElement puElement = new XmlElement("pdmUrl"); //$NON-NLS-1$
+            puElement.addAttribute(new Attribute("url", pdmUrl)); //$NON-NLS-1$
+            rootElement.addElement(puElement);
         }
 
         return document;
