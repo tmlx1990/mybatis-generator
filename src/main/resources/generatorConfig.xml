@@ -17,7 +17,7 @@
             <property name="suppressAllComments" value="true"/>
         </commentGenerator>
         <!--数据库链接地址账号密码-->
-        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://182.92.187.18:3306/test" userId="chqt" password="chqt">
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="" userId="" password="">
         </jdbcConnection>
         <javaTypeResolver>
             <property name="forceBigDecimals" value="false"/>
