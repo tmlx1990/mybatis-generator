@@ -204,12 +204,20 @@ public class DefaultCommentGenerator implements CommentGenerator {
     @Override
     public void addModelClassComment(TopLevelClass topLevelClass,
             IntrospectedTable introspectedTable) {
-        if (suppressAllComments  || !addRemarkComments) {
+        /*if (suppressAllComments  || !addRemarkComments) {
             return;
-        }
+        }*/
 
-        StringBuilder sb = new StringBuilder();
+        //获取实体类名称
+        String entityName = introspectedTable.getFullyQualifiedTable().getDomainObjectName();
+        //StringBuilder sb = new StringBuilder();
+        // modify by yanxin 20180130 修改生成类方法，增加注解需要的引入包
+        topLevelClass.addJavaDocLine("import com.thoughtworks.xstream.annotations.XStreamAlias;");
+        topLevelClass.addJavaDocLine("import java.io.Serializable;\n");
+        topLevelClass.addJavaDocLine("@XStreamAlias(value =\"" + entityName + "\")");
 
+
+/*
         topLevelClass.addJavaDocLine("/**"); //$NON-NLS-1$
 
         String remarks = introspectedTable.getRemarks();
@@ -231,7 +239,7 @@ public class DefaultCommentGenerator implements CommentGenerator {
 
         addJavadocTag(topLevelClass, true);
 
-        topLevelClass.addJavaDocLine(" */"); //$NON-NLS-1$
+        topLevelClass.addJavaDocLine(" *//*"); //$NON-NLS-1$*/
     }
 
     /* (non-Javadoc)
@@ -485,6 +493,8 @@ public class DefaultCommentGenerator implements CommentGenerator {
             addJavadocTag(field, false);
 
             field.addJavaDocLine(" */"); //$NON-NLS-1$
+            // add by yanxin 20180130 增加注解
+            field.addJavaDocLine("@XStreamAlias(value =\"" + introspectedColumn.getActualColumnName() + "\")");
     	}
 	}
 }

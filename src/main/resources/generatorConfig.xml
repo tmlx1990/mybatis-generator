@@ -15,9 +15,10 @@
         <commentGenerator>
             <property name="suppressDate" value="false"/>
             <property name="suppressAllComments" value="true"/>
+            <property name="addRemarkComments" value="false"/>
         </commentGenerator>
         <!--数据库链接地址账号密码-->
-        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="" userId="" password="">
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://182.92.187.18:3306/test" userId="chqt" password="chqt">
         </jdbcConnection>
         <javaTypeResolver>
             <property name="forceBigDecimals" value="false"/>
@@ -32,9 +33,13 @@
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
         <!--生成Dao类存放位置-->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.siants.test.dao" targetProject="src">
+        <!--<javaClientGenerator type="XMLMAPPER" targetPackage="com.siants.test.dao" targetProject="src">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>-->
+        <javaClientGenerator type="ANNOTATEDMAPPER" targetPackage="com.siants.test.dao" targetProject="src">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
+
         <!--生成对应表及类名-->
         <table tableName="LDMenu" domainObjectName="LDMenu" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
         	<!-- 表字段名驼峰样式 -->
