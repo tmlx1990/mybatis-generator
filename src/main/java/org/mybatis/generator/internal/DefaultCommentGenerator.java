@@ -212,8 +212,8 @@ public class DefaultCommentGenerator implements CommentGenerator {
         String entityName = introspectedTable.getFullyQualifiedTable().getDomainObjectName();
         //StringBuilder sb = new StringBuilder();
         // modify by yanxin 20180130 修改生成类方法，增加注解需要的引入包
-        topLevelClass.addJavaDocLine("import com.thoughtworks.xstream.annotations.XStreamAlias;");
-        topLevelClass.addJavaDocLine("import java.io.Serializable;\n");
+        topLevelClass.addJavaDocLine("import com.thoughtworks.xstream.annotations.XStreamAlias;\n");
+        //topLevelClass.addJavaDocLine("import java.io.Serializable;\n");
         topLevelClass.addJavaDocLine("@XStreamAlias(value =\"" + entityName + "\")");
 
 

@@ -18,6 +18,7 @@ package org.mybatis.generator.plugins;
 import java.util.List;
 import java.util.Properties;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.mybatis.generator.api.PluginAdapter;
 import org.mybatis.generator.api.IntrospectedTable;
 import org.mybatis.generator.api.dom.java.Field;
@@ -97,14 +98,15 @@ public class SerializablePlugin extends PluginAdapter {
 
             Field field = new Field();
             field.setFinal(true);
-            field.setInitializationString("1L"); //$NON-NLS-1$
+            Long temp=Long.valueOf(RandomStringUtils.randomNumeric(18));
+            field.setInitializationString(temp+"L"); //$NON-NLS-1$
             field.setName("serialVersionUID"); //$NON-NLS-1$
             field.setStatic(true);
             field.setType(new FullyQualifiedJavaType("long")); //$NON-NLS-1$
             field.setVisibility(JavaVisibility.PRIVATE);
             context.getCommentGenerator().addFieldComment(field, introspectedTable);
 
-            topLevelClass.addField(field);
+            topLevelClass.addField(0,field);
         }
     }
 }
