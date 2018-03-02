@@ -40,6 +40,7 @@ import org.mybatis.generator.config.Context;
 public abstract class PluginAdapter implements Plugin {
     protected Context context;
     protected Properties properties;
+    protected Properties properties;
 
     public PluginAdapter() {
         properties = new Properties();

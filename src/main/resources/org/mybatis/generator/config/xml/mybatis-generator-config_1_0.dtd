@@ -92,10 +92,19 @@
   name CDATA #REQUIRED
   value CDATA #REQUIRED>
 
+<!-- imports 引入类 -->
+<!ELEMENT imports (import*) >
+
+
+<!-- import -->
+<!ELEMENT import EMPTY>
+<!ATTLIST import
+        value CDATA #REQUIRED>
+
 <!--
   The plugin element is used to define a plugin.
 -->
-<!ELEMENT plugin (property*)>
+<!ELEMENT plugin (property*, imports*)>
 <!ATTLIST plugin
   type CDATA #REQUIRED>
 

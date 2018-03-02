@@ -273,6 +273,8 @@ public class ObjectFactory {
                 .getConfigurationType());
         plugin.setContext(context);
         plugin.setProperties(pluginConfiguration.getProperties());
+        // add by yanxin 20180302 增加方法，传入imports
+        plugin.setImports(pluginConfiguration.getProperties());
         return plugin;
     }
 
