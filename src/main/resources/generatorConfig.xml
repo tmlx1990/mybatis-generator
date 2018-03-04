@@ -15,7 +15,7 @@
     <context id="DB2Tables"    targetRuntime="MyBatis3">
         <!--生成的实体类实现序列化接口    【扩展插件】-->
         <plugin type="org.mybatis.generator.plugins.SerializablePlugin" />
-        <plugin type="org.mybatis.generator.plugins.AnnotationPlugin" >
+        <plugin type="org.mybatis.generator.plugins.ImportPlugin" >
             <property name="trimStrings" value="true"/>
             <imports>
                 <import value="com.siants.test"/>

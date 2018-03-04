@@ -18,6 +18,7 @@ package org.mybatis.generator.plugins;
 import org.mybatis.generator.api.IntrospectedTable;
 import org.mybatis.generator.api.PluginAdapter;
 import org.mybatis.generator.api.dom.java.FullyQualifiedJavaType;
+import org.mybatis.generator.api.dom.java.Import;
 import org.mybatis.generator.api.dom.java.TopLevelClass;
 
 import java.util.List;
@@ -38,15 +39,10 @@ import java.util.Properties;
  */
 public class ImportPlugin extends PluginAdapter {
 
-    private FullyQualifiedJavaType serializable;
-    private FullyQualifiedJavaType gwtSerializable;
-    private boolean addGWTInterface;
-    private boolean suppressJavaInterface;
+    private List<Import> imports;
 
     public ImportPlugin() {
         super();
-        serializable = new FullyQualifiedJavaType("java.io.Serializable"); //$NON-NLS-1$
-        gwtSerializable = new FullyQualifiedJavaType("com.google.gwt.user.client.rpc.IsSerializable"); //$NON-NLS-1$
     }
 
     public boolean validate(List<String> warnings) {
@@ -57,11 +53,14 @@ public class ImportPlugin extends PluginAdapter {
     @Override
     public void setProperties(Properties properties) {
         super.setProperties(properties);
-        addGWTInterface = Boolean.valueOf(properties.getProperty("addGWTInterface")); //$NON-NLS-1$
-        addGWTInterface = Boolean.valueOf(properties.getProperty("trimStrings")); //$NON-NLS-1$
-        suppressJavaInterface = Boolean.valueOf(properties.getProperty("suppressJavaInterface")); //$NON-NLS-1$
     }
-    
+
+    @Override
+    public void setImportList(List<Import> importList) {
+        super.setImportList(importList);
+        imports = importList; //$NON-NLS-1$
+    }
+
     @Override
     public boolean modelBaseRecordClassGenerated(TopLevelClass topLevelClass,
             IntrospectedTable introspectedTable) {

@@ -15,13 +15,11 @@
  */
 package org.mybatis.generator.api;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
-import org.mybatis.generator.api.dom.java.Field;
-import org.mybatis.generator.api.dom.java.Interface;
-import org.mybatis.generator.api.dom.java.Method;
-import org.mybatis.generator.api.dom.java.TopLevelClass;
+import org.mybatis.generator.api.dom.java.*;
 import org.mybatis.generator.api.dom.xml.Document;
 import org.mybatis.generator.api.dom.xml.XmlElement;
 import org.mybatis.generator.config.Context;
@@ -40,10 +38,12 @@ import org.mybatis.generator.config.Context;
 public abstract class PluginAdapter implements Plugin {
     protected Context context;
     protected Properties properties;
-    protected Properties properties;
+    // add by yanxin 20180302 增加import列表
+    protected List<Import> importList;
 
     public PluginAdapter() {
         properties = new Properties();
+        importList = new ArrayList<Import>();
     }
 
     public Context getContext() {
@@ -60,6 +60,14 @@ public abstract class PluginAdapter implements Plugin {
 
     public void setProperties(Properties properties) {
         this.properties.putAll(properties);
+    }
+
+    public List<Import> getImportList() {
+        return importList;
+    }
+
+    public void setImportList(List<Import> importList) {
+        this.importList = importList;
     }
 
     public List<GeneratedJavaFile> contextGenerateAdditionalJavaFiles() {

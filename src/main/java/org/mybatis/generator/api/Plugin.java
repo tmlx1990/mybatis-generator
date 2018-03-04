@@ -96,7 +96,12 @@ public interface Plugin {
      */
     void setProperties(Properties properties);
 
-    /**
+   /**
+    *
+    */
+   void setImportList(test);
+
+   /**
      * This method is called just before the getGeneratedXXXFiles methods are called on the introspected table. Plugins
      * can implement this method to override any of the default attributes, or change the results of database
      * introspection, before any code generation activities occur. Attributes are listed as static Strings with the

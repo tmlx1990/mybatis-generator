@@ -56,11 +56,11 @@ public class AnnotationPlugin extends PluginAdapter {
         imports = importList; //$NON-NLS-1$
     }
 
-    @Override
+   /* @Override
     public void setProperties(List<Import> importList) {
         super.setImports(importList);
         imports = importList; //$NON-NLS-1$
-    }
+    }*/
     
     @Override
     public boolean modelBaseRecordClassGenerated(TopLevelClass topLevelClass,
