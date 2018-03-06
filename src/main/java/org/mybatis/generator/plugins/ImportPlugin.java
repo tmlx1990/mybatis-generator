@@ -84,7 +84,6 @@ public class ImportPlugin extends PluginAdapter {
     protected void makeImport(TopLevelClass topLevelClass,
                               IntrospectedTable introspectedTable) {
         for( Import iImport : imports){
-            System.out.println(iImport.getValue());
             topLevelClass.addImportedType(iImport.getValue());
         }
     }
