@@ -17,7 +17,6 @@ package org.mybatis.generator.plugins;
 
 import org.mybatis.generator.api.IntrospectedTable;
 import org.mybatis.generator.api.PluginAdapter;
-import org.mybatis.generator.api.dom.java.FullyQualifiedJavaType;
 import org.mybatis.generator.api.dom.java.Import;
 import org.mybatis.generator.api.dom.java.TopLevelClass;
 
@@ -64,46 +63,29 @@ public class ImportPlugin extends PluginAdapter {
     @Override
     public boolean modelBaseRecordClassGenerated(TopLevelClass topLevelClass,
             IntrospectedTable introspectedTable) {
-        makeSerializable(topLevelClass, introspectedTable);
+        makeImport(topLevelClass, introspectedTable);
         return true;
     }
 
     @Override
     public boolean modelPrimaryKeyClassGenerated(TopLevelClass topLevelClass,
             IntrospectedTable introspectedTable) {
-        makeSerializable(topLevelClass, introspectedTable);
+        makeImport(topLevelClass, introspectedTable);
         return true;
     }
 
     @Override
     public boolean modelRecordWithBLOBsClassGenerated(
             TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
-        makeSerializable(topLevelClass, introspectedTable);
+        makeImport(topLevelClass, introspectedTable);
         return true;
     }
 
-    protected void makeSerializable(TopLevelClass topLevelClass,
-            IntrospectedTable introspectedTable) {
-       /* if (addGWTInterface) {
-            topLevelClass.addImportedType(gwtSerializable);
-            topLevelClass.addSuperInterface(gwtSerializable);
+    protected void makeImport(TopLevelClass topLevelClass,
+                              IntrospectedTable introspectedTable) {
+        for( Import iImport : imports){
+            System.out.println(iImport.getValue());
+            topLevelClass.addImportedType(iImport.getValue());
         }
-        
-        if (!suppressJavaInterface) {
-            topLevelClass.addImportedType(serializable);
-            topLevelClass.addSuperInterface(serializable);
-
-            Field field = new Field();
-            field.setFinal(true);
-            Long temp=Long.valueOf(RandomStringUtils.randomNumeric(18));
-            field.setInitializationString(temp+"L"); //$NON-NLS-1$
-            field.setName("serialVersionUID"); //$NON-NLS-1$
-            field.setStatic(true);
-            field.setType(new FullyQualifiedJavaType("long")); //$NON-NLS-1$
-            field.setVisibility(JavaVisibility.PRIVATE);
-            context.getCommentGenerator().addFieldComment(field, introspectedTable);
-
-            topLevelClass.addField(0,field);
-        }*/
     }
 }

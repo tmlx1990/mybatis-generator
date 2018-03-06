@@ -15,16 +15,13 @@
  */
 package org.mybatis.generator.api;
 
-import java.util.List;
-import java.util.Properties;
-
-import org.mybatis.generator.api.dom.java.Field;
-import org.mybatis.generator.api.dom.java.Interface;
-import org.mybatis.generator.api.dom.java.Method;
-import org.mybatis.generator.api.dom.java.TopLevelClass;
+import org.mybatis.generator.api.dom.java.*;
 import org.mybatis.generator.api.dom.xml.Document;
 import org.mybatis.generator.api.dom.xml.XmlElement;
 import org.mybatis.generator.config.Context;
+
+import java.util.List;
+import java.util.Properties;
 
 /**
  * This interface defines methods that will be called at different times during
@@ -96,10 +93,11 @@ public interface Plugin {
      */
     void setProperties(Properties properties);
 
-   /**
-    *
-    */
-   void setImportList(test);
+    /**
+     * 设置ImportList
+     * @param importList
+     */
+   void setImportList(List<Import> importList);
 
    /**
      * This method is called just before the getGeneratedXXXFiles methods are called on the introspected table. Plugins

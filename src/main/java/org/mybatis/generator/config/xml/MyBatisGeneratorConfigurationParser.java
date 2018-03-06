@@ -37,22 +37,8 @@ import java.io.InputStream;
 import java.net.URL;
 import java.util.Properties;
 
-import org.mybatis.generator.config.ColumnOverride;
-import org.mybatis.generator.config.ColumnRenamingRule;
-import org.mybatis.generator.config.CommentGeneratorConfiguration;
-import org.mybatis.generator.config.Configuration;
-import org.mybatis.generator.config.Context;
-import org.mybatis.generator.config.GeneratedKey;
-import org.mybatis.generator.config.IgnoredColumn;
-import org.mybatis.generator.config.JDBCConnectionConfiguration;
-import org.mybatis.generator.config.JavaClientGeneratorConfiguration;
-import org.mybatis.generator.config.JavaModelGeneratorConfiguration;
-import org.mybatis.generator.config.JavaTypeResolverConfiguration;
-import org.mybatis.generator.config.ModelType;
-import org.mybatis.generator.config.PluginConfiguration;
-import org.mybatis.generator.config.PropertyHolder;
-import org.mybatis.generator.config.SqlMapGeneratorConfiguration;
-import org.mybatis.generator.config.TableConfiguration;
+import org.mybatis.generator.api.dom.java.Import;
+import org.mybatis.generator.config.*;
 import org.mybatis.generator.exception.XMLParserException;
 import org.mybatis.generator.internal.ObjectFactory;
 import org.w3c.dom.Element;
@@ -508,6 +494,28 @@ public class MyBatisGeneratorConfigurationParser {
             if ("property".equals(childNode.getNodeName())) { //$NON-NLS-1$
                 parseProperty(pluginConfiguration, childNode);
             }
+
+            // add by yanxin 20180305 解析出imports节点后，调用parseImport方法，解析import节点
+            if ("imports".equals(childNode.getNodeName())){
+                parseImport(pluginConfiguration, childNode);
+            }
+
+        }
+    }
+
+    private void parseImport(PluginConfiguration pluginConfiguration, Node node) {
+
+        NodeList nodeList = node.getChildNodes();
+        for (int i = 0; i < nodeList.getLength(); i++) {
+            Node childNode = nodeList.item(i);
+
+            if (childNode.getNodeType() != Node.ELEMENT_NODE) {
+                continue;
+            }
+
+            if ("import".equals(childNode.getNodeName())){
+                parseImportList(pluginConfiguration, childNode);
+            }
         }
     }
 
@@ -625,6 +633,18 @@ public class MyBatisGeneratorConfigurationParser {
         String value = attributes.getProperty("value"); //$NON-NLS-1$
 
         propertyHolder.addProperty(name, value);
+    }
+
+    /**
+     *
+     * @param importHolder
+     * @param node
+     */
+    private void parseImportList(ImportHolder importHolder, Node node) {
+        Properties attributes = parseAttributes(node);
+        Import iImport = new Import();
+        iImport.setValue(attributes.getProperty("value"));
+        importHolder.addImport(iImport);
     }
 
     private Properties parseAttributes(Node node) {

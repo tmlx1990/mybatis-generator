@@ -244,8 +244,7 @@ public class JavaBeansUtil {
         field.setName(property);
         context.getCommentGenerator().addFieldComment(field,
                 introspectedTable, introspectedColumn);
-        //TODO 
-        //add by yanxin 增加调用字段注释函数
+        //add by yanxin 增加调用字段注解函数
         context.getCommentGenerator().addColumnNameComment(field,
         		introspectedTable,introspectedColumn);
         return field;

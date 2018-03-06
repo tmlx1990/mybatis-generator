@@ -25,6 +25,7 @@ import org.mybatis.generator.api.Plugin;
 import org.mybatis.generator.api.IntrospectedColumn;
 import org.mybatis.generator.api.IntrospectedTable;
 import org.mybatis.generator.api.dom.java.Field;
+import org.mybatis.generator.api.dom.java.Import;
 import org.mybatis.generator.api.dom.java.Interface;
 import org.mybatis.generator.api.dom.java.Method;
 import org.mybatis.generator.api.dom.java.TopLevelClass;
@@ -60,6 +61,10 @@ public final class PluginAggregator implements Plugin {
     }
 
     public void setProperties(Properties properties) {
+        throw new UnsupportedOperationException();
+    }
+
+    public void setImportList(List<Import> importList) {
         throw new UnsupportedOperationException();
     }
 

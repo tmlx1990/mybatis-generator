@@ -200,8 +200,13 @@ public interface CommentGenerator {
      *            the root element
      */
     public void addRootComment(XmlElement rootElement);
-    
-    //TODO yanxin 
+
+    /**
+     * 增加列名注解
+     * @param field
+     * @param introspectedTable
+     * @param introspectedColumn
+     */
     public void addColumnNameComment(Field field,
             IntrospectedTable introspectedTable,
             IntrospectedColumn introspectedColumn);

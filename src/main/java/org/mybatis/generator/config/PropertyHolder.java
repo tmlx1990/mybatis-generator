@@ -24,7 +24,7 @@ import org.mybatis.generator.api.dom.xml.XmlElement;
 /**
  * @author Jeff Butler
  */
-public abstract class PropertyHolder {
+public abstract class PropertyHolder extends ImportHolder{
     private Properties properties;
 
     /**

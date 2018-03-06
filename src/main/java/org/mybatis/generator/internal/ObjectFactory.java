@@ -274,7 +274,7 @@ public class ObjectFactory {
         plugin.setContext(context);
         plugin.setProperties(pluginConfiguration.getProperties());
         // add by yanxin 20180302 增加方法，传入imports
-        plugin.setImportList(pluginConfiguration.getProperties());
+        plugin.setImportList(pluginConfiguration.getImportList());
         return plugin;
     }
 

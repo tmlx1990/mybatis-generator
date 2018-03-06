@@ -19,10 +19,9 @@
             <property name="trimStrings" value="true"/>
             <imports>
                 <import value="com.siants.test"/>
-                <import value="com.siants.test1"/>
-                <import value="com.siants.test2"/>
+                <import value="com.siants.tesa"/>
+                <import value="com.siants.tesb"/>
             </imports>
-
         </plugin>
         <commentGenerator>
             <property name="suppressDate" value="true"/>
