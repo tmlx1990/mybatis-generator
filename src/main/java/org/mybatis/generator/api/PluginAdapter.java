@@ -15,6 +15,7 @@
  */
 package org.mybatis.generator.api;
 
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -40,10 +41,13 @@ public abstract class PluginAdapter implements Plugin {
     protected Properties properties;
     // add by yanxin 20180302 增加import列表
     protected List<Import> importList;
+    // annotationClass
+    protected List<AnnotationClass> annotationClassList;
 
     public PluginAdapter() {
         properties = new Properties();
         importList = new ArrayList<Import>();
+        annotationClassList = new ArrayList<AnnotationClass>();
     }
 
     public Context getContext() {
@@ -68,6 +72,14 @@ public abstract class PluginAdapter implements Plugin {
 
     public void setImportList(List<Import> importList) {
         this.importList = importList;
+    }
+
+    public List<AnnotationClass> getAnnotationClassList() {
+        return annotationClassList;
+    }
+
+    public void setAnnotationClassList(List<AnnotationClass> annotationClassList) {
+        this.annotationClassList = annotationClassList;
     }
 
     public List<GeneratedJavaFile> contextGenerateAdditionalJavaFiles() {
