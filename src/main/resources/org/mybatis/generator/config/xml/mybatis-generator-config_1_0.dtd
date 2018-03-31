@@ -101,6 +101,16 @@
 <!ATTLIST import
         value CDATA #REQUIRED>
 
+<!-- Annotations -->
+<!ELEMENT annotations (annotation*)>
+
+<!-- Annotation -->
+<!ELEMENT annotation EMPTY>
+<!ATTLIST annotation
+        value CDATA #REQUIRED
+        isDynamic CDATA #REQUIRED
+        >
+
 <!--
   The plugin element is used to define a plugin.
 -->
