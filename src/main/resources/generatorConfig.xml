@@ -23,6 +23,13 @@
                 <import value="com.siants.tesb"/>
             </imports>
         </plugin>
+
+        <plugin type="org.mybatis.generator.plugins.AnnotationClassPlugin">
+           <annotationClasses>
+               <annotationClass name="XStreamAlias" dynamic="true" />
+           </annotationClasses>
+
+        </plugin>
         <commentGenerator>
             <property name="suppressDate" value="true"/>
             <property name="suppressAllComments" value="true"/>
@@ -59,6 +66,10 @@
         <table tableName="LDMenu" domainObjectName="LDMenu" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
         	<!-- 表字段名驼峰样式 -->
         	<property name="useActualColumnNames" value="true" />
+        </table>
+        <table tableName="LDMenuGrpToMenu" domainObjectName="LDMenuGrpToMenu" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+            <!-- 表字段名驼峰样式 -->
+            <property name="useActualColumnNames" value="true" />
         </table>
     </context>
 </generatorConfiguration>

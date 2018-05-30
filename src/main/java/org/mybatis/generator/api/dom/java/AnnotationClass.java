@@ -13,7 +13,12 @@ package org.mybatis.generator.api.dom.java;
  */
 public class AnnotationClass {
 
+    private String name;
+
     private String value;
+
+    private String dynamic;
+
 
     public String getValue() {
         return value;
@@ -21,5 +26,21 @@ public class AnnotationClass {
 
     public void setValue(String value) {
         this.value = value;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDynamic() {
+        return dynamic;
+    }
+
+    public void setDynamic(String dynamic) {
+        this.dynamic = dynamic;
     }
 }

@@ -97,7 +97,13 @@ public interface Plugin {
      * 设置ImportList
      * @param importList
      */
-   void setImportList(List<Import> importList);
+    void setImportList(List<Import> importList);
+
+    /**
+     * 设置AnnotationClassList
+     * @param annotationClassList
+     */
+    void setAnnotationClassList(List<AnnotationClass> annotationClassList);
 
    /**
      * This method is called just before the getGeneratedXXXFiles methods are called on the introspected table. Plugins

@@ -24,11 +24,7 @@ import org.mybatis.generator.api.GeneratedXmlFile;
 import org.mybatis.generator.api.Plugin;
 import org.mybatis.generator.api.IntrospectedColumn;
 import org.mybatis.generator.api.IntrospectedTable;
-import org.mybatis.generator.api.dom.java.Field;
-import org.mybatis.generator.api.dom.java.Import;
-import org.mybatis.generator.api.dom.java.Interface;
-import org.mybatis.generator.api.dom.java.Method;
-import org.mybatis.generator.api.dom.java.TopLevelClass;
+import org.mybatis.generator.api.dom.java.*;
 import org.mybatis.generator.api.dom.xml.Document;
 import org.mybatis.generator.api.dom.xml.XmlElement;
 import org.mybatis.generator.config.Context;
@@ -65,6 +61,11 @@ public final class PluginAggregator implements Plugin {
     }
 
     public void setImportList(List<Import> importList) {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public void setAnnotationClassList(List<AnnotationClass> annotationClassList) {
         throw new UnsupportedOperationException();
     }
 

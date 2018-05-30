@@ -275,6 +275,8 @@ public class ObjectFactory {
         plugin.setProperties(pluginConfiguration.getProperties());
         // add by yanxin 20180302 增加方法，传入imports
         plugin.setImportList(pluginConfiguration.getImportList());
+        // add by yanxin 20180529 增加方法，传入AnnotationClassList
+        plugin.setAnnotationClassList(pluginConfiguration.getAnnotationClassList());
         return plugin;
     }
 

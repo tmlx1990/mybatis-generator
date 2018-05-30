@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * @author yanxin
  */
-public abstract class ImportHolder {
+public abstract class ImportHolder extends AnnotationClassHolder{
     private List<Import> importList;
 
     public ImportHolder() {

@@ -37,6 +37,7 @@ import java.io.InputStream;
 import java.net.URL;
 import java.util.Properties;
 
+import org.mybatis.generator.api.dom.java.AnnotationClass;
 import org.mybatis.generator.api.dom.java.Import;
 import org.mybatis.generator.config.*;
 import org.mybatis.generator.exception.XMLParserException;
@@ -500,6 +501,11 @@ public class MyBatisGeneratorConfigurationParser {
                 parseImport(pluginConfiguration, childNode);
             }
 
+            // add by yanxin 20180529 解析出annotationClasses节点后，调用parseAnnotationClass方法，解析AnnotationClass节点
+            if ("annotationClasses".equals(childNode.getNodeName())){
+                parseAnnotationClass(pluginConfiguration, childNode);
+            }
+
         }
     }
 
@@ -517,6 +523,37 @@ public class MyBatisGeneratorConfigurationParser {
                 parseImportList(pluginConfiguration, childNode);
             }
         }
+    }
+
+    private void parseAnnotationClass(PluginConfiguration pluginConfiguration, Node node) {
+
+        NodeList nodeList = node.getChildNodes();
+        for (int i = 0; i < nodeList.getLength(); i++) {
+            Node childNode = nodeList.item(i);
+
+            if (childNode.getNodeType() != Node.ELEMENT_NODE) {
+                continue;
+            }
+
+            if ("annotationClass".equals(childNode.getNodeName())){
+                parseAnnotationClassList(pluginConfiguration, childNode);
+            }
+        }
+    }
+
+    /**
+     *
+     * @param annotationClassHolder
+     * @param node
+     */
+    private void parseAnnotationClassList(AnnotationClassHolder annotationClassHolder, Node node) {
+        Properties attributes = parseAttributes(node);
+        AnnotationClass annotationClass = new AnnotationClass();
+        annotationClass.setValue(attributes.getProperty("value"));
+        annotationClass.setName(attributes.getProperty("name"));
+        annotationClass.setDynamic(attributes.getProperty("dynamic"));
+        //TODo
+        annotationClassHolder.addAnnotationClass(annotationClass);
     }
 
     private void parseJavaModelGenerator(Context context, Node node) {

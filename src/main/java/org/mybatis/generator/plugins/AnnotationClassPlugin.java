@@ -15,6 +15,8 @@
  */
 package org.mybatis.generator.plugins;
 
+import static org.mybatis.generator.internal.util.JavaBeansUtil.getValidPropertyName;
+
 import org.mybatis.generator.api.IntrospectedTable;
 import org.mybatis.generator.api.PluginAdapter;
 import org.mybatis.generator.api.dom.java.AnnotationClass;
@@ -39,6 +41,8 @@ public class AnnotationClassPlugin extends PluginAdapter {
 
     private List<AnnotationClass> annotationClassList;
 
+    private boolean dynamic;
+
     public AnnotationClassPlugin() {
         super();
     }
@@ -56,7 +60,7 @@ public class AnnotationClassPlugin extends PluginAdapter {
     @Override
     public void setAnnotationClassList(List<AnnotationClass> annotationClassList) {
         super.setAnnotationClassList(annotationClassList);
-        annotationClassList = annotationClassList; //$NON-NLS-1$
+        this.annotationClassList = annotationClassList; //$NON-NLS-1$
     }
 
     @Override
@@ -82,26 +86,24 @@ public class AnnotationClassPlugin extends PluginAdapter {
 
     protected void makeSerializable(TopLevelClass topLevelClass,
                                     IntrospectedTable introspectedTable) {
-       /* if (addGWTInterface) {
-            topLevelClass.addImportedType(gwtSerializable);
-            topLevelClass.addSuperInterface(gwtSerializable);
+        for( AnnotationClass annotationClass : annotationClassList){
+            StringBuffer sb = new StringBuffer();
+            if(Boolean.valueOf(annotationClass.getDynamic())){
+                sb.append("@")
+                        .append(annotationClass.getName())
+                        .append("(value = \"")
+                        .append(getValidPropertyName(introspectedTable.getFullyQualifiedTable().getDomainObjectName()))
+                        .append("\")");
+            }else {
+                sb.append("@")
+                        .append(annotationClass.getName())
+                        .append("(value = \"")
+                        .append(topLevelClass.getType().getShortName())
+                        .append("\")");
+            }
+            topLevelClass.addAnnotation(sb.toString());
         }
-        
-        if (!suppressJavaInterface) {
-            topLevelClass.addImportedType(serializable);
-            topLevelClass.addSuperInterface(serializable);
 
-            Field field = new Field();
-            field.setFinal(true);
-            Long temp=Long.valueOf(RandomStringUtils.randomNumeric(18));
-            field.setInitializationString(temp+"L"); //$NON-NLS-1$
-            field.setName("serialVersionUID"); //$NON-NLS-1$
-            field.setStatic(true);
-            field.setType(new FullyQualifiedJavaType("long")); //$NON-NLS-1$
-            field.setVisibility(JavaVisibility.PRIVATE);
-            context.getCommentGenerator().addFieldComment(field, introspectedTable);
 
-            topLevelClass.addField(0,field);
-        }*/
     }
 }
