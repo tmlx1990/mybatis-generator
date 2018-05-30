@@ -18,9 +18,7 @@
         <plugin type="org.mybatis.generator.plugins.ImportPlugin" >
             <property name="trimStrings" value="true"/>
             <imports>
-                <import value="com.siants.test"/>
-                <import value="com.siants.tesa"/>
-                <import value="com.siants.tesb"/>
+                <import value="com.thoughtworks.xstream.annotations.XStreamAlias"/>
             </imports>
         </plugin>
 
