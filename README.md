@@ -21,4 +21,4 @@
    3. v1.2版本  
    `修改了SerializablePlugin插件。`
    4. v1.3版本  
-   `添加了ImportPlugin、AnnotationClassPlugin插件，可以通过配置进行自动加入引入包、类注解的功能。`
+   `添加了ImportPlugin、AnnotationClassPlugin插件，可以通过配置进行自动加入引入包、类注解的功能。` 
